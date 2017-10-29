@@ -868,8 +868,8 @@ namespace detail {
 
             {
                 size_t i = 0;
-                for (auto const &opt : m_options) parseInfos[i++].parser = &opt;
-                for (auto const &arg : m_args) parseInfos[i++].parser = &arg;
+                for (auto const &opt : m_options) parsers[i++] = &opt;
+                for (auto const &arg : m_args) parsers[i++] = &arg;
             }
 
             m_exeName.set( exeName );
@@ -879,7 +879,7 @@ namespace detail {
                 bool tokenParsed = false;
 
                 for( size_t i = 0; i < totalParsers; ++i ) {
-                    auto&  parser = parseInfos[i];
+                    auto&  parser = parsers[i];
                     if( parser->canParse() ) {
                         result = parser->internalParse(exeName, result.value().remainingTokens());
                         if (!result)
