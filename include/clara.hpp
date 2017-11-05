@@ -879,7 +879,7 @@ namespace detail {
                 bool tokenParsed = false;
 
                 for( size_t i = 0; i < totalParsers; ++i ) {
-                    auto&  parser = parsers[i];
+                    auto& parser = parsers[i];
                     if( parser->canParse() ) {
                         result = parser->internalParse(exeName, result.value().remainingTokens());
                         if (!result)
